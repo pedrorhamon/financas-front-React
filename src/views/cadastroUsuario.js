@@ -59,10 +59,8 @@ class CadastroUsuario extends React.Component {
                     </div>
                 </Card>
             </div>
-
         )
     }
-
 }
 
 export default CadastroUsuario
