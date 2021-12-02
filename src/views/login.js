@@ -14,15 +14,16 @@ class Login extends React.Component {
         mensagemErro: null
     }
 
-    entrar = () => {
-        axios.post('http://localhost:8080/api/usuarios/autenticar', {
-            email: this.state.email,
-            senha: this.state.senha
-        }).then(response => {
-            this.props.history.push('/home');
-        }).catch(erro => {
-            this.setState({mensagemErro: erro.response.data})
-        })
+    entrar = async () => {
+        const response = await
+            axios.post('http://localhost:8080/api/usuarios/autenticar', {
+                email: this.state.email,
+                senha: this.state.senha
+            }).then(response => {
+                this.props.history.push('/home');
+            }).catch(erro => {
+                this.setState({ mensagemErro: erro.response.data })
+            })
     }
 
     prepareCadastrar = () => {
@@ -75,4 +76,4 @@ class Login extends React.Component {
     }
 }
 
-export default withRouter (Login);
+export default withRouter(Login);
