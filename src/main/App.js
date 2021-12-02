@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Rotas from './rotas';
-import CadastroUsuario from '../views/cadastroUsuario';
 import NavBar from '../components/navbar';
 
 import 'bootswatch/dist/flatly/bootstrap.css'
