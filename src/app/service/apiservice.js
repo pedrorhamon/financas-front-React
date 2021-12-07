@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 
 const httpClient = axios.create({
     baseURL: 'http://localhost:8080'
@@ -6,28 +6,28 @@ const httpClient = axios.create({
 
 class ApiService {
 
-    constructor(apiurl) {
+    constructor(apiurl){
         this.apiurl = apiurl;
     }
 
-    post(url, object) {
+    post(url, objeto){
         const requestUrl = `${this.apiurl}${url}`
-        return httpClient.post(requestUrl, object);
+        return httpClient.post(requestUrl, objeto);
     }
 
-    put(url, object) {
+    put(url, objeto){
         const requestUrl = `${this.apiurl}${url}`
-        return httpClient.put(requestUrl, object);
+        return httpClient.put(requestUrl, objeto);
     }
 
-    delete(url) {
+    delete(url){
         const requestUrl = `${this.apiurl}${url}`
-        return httpClient.delete(requestUrl);
+        return httpClient.delete(requestUrl)
     }
 
-    get(url) {
+    get(url){
         const requestUrl = `${this.apiurl}${url}`
-        return httpClient.get(requestUrl);
+        return httpClient.get(requestUrl)
     }
 }
 

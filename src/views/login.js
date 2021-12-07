@@ -2,8 +2,8 @@ import React from "react";
 
 import { withRouter } from "react-router-dom";
 
-
-import UsuarioService from "../app/usuarioService";
+import UsuarioService from "../app/service/usuarioService";
+import LocalStorageService from '../app/service/localstorageService'
 
 import Card from '../components/card'
 import FormGroup from "../components/form-group";
@@ -21,14 +21,14 @@ class Login extends React.Component {
         this.service = new UsuarioService();
     }
 
-    entrar = async () => {
+    entrar = () => {
         this.service.autenticar({
             email: this.state.email,
             senha: this.state.senha
 
         }).then(response => {
-            localStorage.setItem('_usuario_logado', JSON.stringify(response.data))
-            this.props.history.push('/home');
+            LocalStorageService.adicionarItem('_usuario_logado', response.data)
+            this.props.history.push('/home')
         }).catch(erro => {
             this.setState({ mensagemErro: erro.response.data })
         })
