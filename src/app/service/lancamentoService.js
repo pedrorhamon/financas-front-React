@@ -1,4 +1,4 @@
-import ApiService from '../apiservice'
+import ApiService from './apiservice'
 
 export default class LancamentoService extends ApiService {
     constructor(){
@@ -16,6 +16,9 @@ export default class LancamentoService extends ApiService {
         }
         if(lancamentoFiltro.status){
             params = `${params}&status=${lancamentoFiltro.status}`
+        }
+        if(lancamentoFiltro.usuario){
+            params = `${params}&usuario=${lancamentoFiltro.usuario}`
         }
         return this.get(params);
     }

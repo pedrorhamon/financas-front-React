@@ -6,18 +6,37 @@ import SelectMenu from "../../components/selectMenu";
 import LancamentosTable from "./lancamentosTable";
 
 import LancamentoService from "../../app/service/lancamentoService";
+import LocalStorageService from '../../app/service/localstorageService';
 
 class ConsultaLancamentos extends React.Component {
-
-    buscar = () => {
-        console.log(this.state);
-    }
 
     state = {
         ano: '',
         mes:'',
         tipo:'',
         lancamentos: []
+    }
+
+    constructor(){
+        super();
+        this.service = new LancamentoService();
+    }
+
+    buscar = () => {
+        const usuarioLogado = LocalStorageService.obterItem('_usuario_logado');
+
+        const lancamentoFiltro = {
+            ano: this.state.ano,
+            mes: this.state.mes,
+            tipo: this.state.tipo,
+            usuario: usuarioLogado.id
+        }
+        this.service.consultar(lancamentoFiltro)
+        .then(resposta => {
+            this.setState({lancamentos: resposta.data})
+        }).catch(erro => {
+            console.log(erro);
+        })
     }
 
     render() {
