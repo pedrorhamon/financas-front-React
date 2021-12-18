@@ -9,12 +9,13 @@ export default props => {
         return (
             <tr key={lancamento.id}>
                 <td>{lancamento.descricao}</td>
-                <td>{currencyFormatter.format(lancamento.valor,{locale: 'pt-BR'})}</td>
+                <td>{currencyFormatter.format(lancamento.valor, { locale: 'pt-BR' })}</td>
                 <td>{lancamento.tipo}</td>
                 <td>{lancamento.mes}</td>
                 <td>{lancamento.status}</td>
                 <td>
-
+                    <button type="button" className="btn btn-primary">Editar</button>
+                    <button type="button" className="btn btn-danger">Deletar</button>
                 </td>
             </tr>
         )
