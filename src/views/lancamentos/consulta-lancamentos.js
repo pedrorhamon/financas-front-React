@@ -50,8 +50,16 @@ class ConsultaLancamentos extends React.Component {
         console.log(id);
     }
 
-    deletar = (id) => {
-        console.log(id);
+    deletar = (lancamento) => {
+        this.service.deletar(lancamento.id)
+        .then(respnse => {
+            const lancamentos = this.state.lancamentos;
+            const index = lancamentos.indexOf(lancamento)
+            lancamento.splice(index, 1);
+            mensagens.mensagemSucesso("Lancamento deletado com sucesso!")
+        }).catch (erro => {
+            mensagens.mensagemErro("Ocorreu um erro ao tentar deletar o Lançamento")
+        })
     }
 
     render() {
@@ -107,7 +115,9 @@ class ConsultaLancamentos extends React.Component {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="bs-component">
-                            <LancamentosTable lancamentos={this.state.lancamentos} deletar={this.deletar} editar={this.editar}/>
+                            <LancamentosTable lancamentos={this.state.lancamentos} 
+                                             deletar={this.deletar}
+                                             editar={this.editar}/>
                         </div>
                     </div>
                 </div>
