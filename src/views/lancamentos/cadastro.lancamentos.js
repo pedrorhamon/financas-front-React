@@ -21,7 +21,7 @@ class CadastroLancamentos extends React.Component {
         return (
             <Card title="Cadastro de Lançamentos">
                 <div className="row">
-                    <div className="col-md-12">
+                    <div className="col-md-6">
                         <FormGroup id="inputDescricao" label="Descrição: *">
                             <input id="inputDescricao" type="text" className="form-control" />
                         </FormGroup>
@@ -29,13 +29,13 @@ class CadastroLancamentos extends React.Component {
                 </div>
                 <p></p>
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-2">
                         <FormGroup id="inputAno" label="Ano: *">
                             <input id="inputAno" type="text" className="form-control" />
                         </FormGroup>
                     </div>
                     <p></p>
-                    <div className="col-md-6">
+                    <div className="col-md-2">
                         <FormGroup id="inputMes" label="Mês: *">
                             <SelectMenu id="inputMes" className="form-control" lista={meses} />
                         </FormGroup>
@@ -43,24 +43,23 @@ class CadastroLancamentos extends React.Component {
                 </div>
                 <p></p>
                 <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-md-2">
                         <FormGroup id="inputValor" label="Valor: *">
                             <input id="inputValor" type="text" className="form-control" />
                         </FormGroup>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-2">
                         <FormGroup id="inputTipo" label="Tipo: *">
                             <SelectMenu id="inputTipo" className="form-control" lista={tipos} />
                         </FormGroup>
                     </div>
-                </div>
-                <p></p>
-                <div className="col-md-4">
+                    <div className="col-md-3">
                     <FormGroup id="inputStatus" label="Status:">
                         <input type="text" className="form-control" disabled />
                     </FormGroup>
                 </div>
-                <br></br>
+                </div>
+               <br></br>
                 <div className="row">
                 <div className="col-md-6">
                     <button className="btn btn-success">Salvar</button>
