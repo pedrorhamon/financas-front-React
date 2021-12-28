@@ -6,6 +6,9 @@ import SelectMenu from "../../components/selectMenu";
 
 import LancamentoService from "../../app/service/lancamentoService";
 import { Button } from "primereact/button";
+import * as messages from '../../components/toastr';
+
+import LocalStorageService from "../../app/service/localstorageService";
 
 class CadastroLancamentos extends React.Component {
 
@@ -24,8 +27,29 @@ class CadastroLancamentos extends React.Component {
         this.service = new LancamentoService();
     }
 
+    
     submit = () => {
-        console.log(this.state);
+
+        const usuarioLogado = LocalStorageService.obterItem('_usuario_logado');
+
+        const { descricao, valor, mes, ano, tipo} = this.state;
+
+       const lancamento = {
+           descricao,
+           valor,
+           mes,
+           ano, 
+           tipo, 
+           usuario: usuarioLogado.id
+        }
+
+           this.service.salvar(lancamento)
+           .then(response => {
+            messages.mensagemSucesso('Lançamento Cadastrado com sucesso!')
+           }).catch(erro =>{
+               messages.mensagemErro(erro.response.data)
+           })
+       
     }
 
     handleChange = (event) => {
@@ -112,7 +136,9 @@ class CadastroLancamentos extends React.Component {
                <br></br>
                 <div className="row">
                 <div className="col-md-6">
-                    <button onClick={this.submit} className="btn btn-success">Salvar</button>
+                    <button 
+                        onClick={this.submit} 
+                        className="btn btn-success">Salvar</button>
                     <button className="btn btn-danger">Cancelar</button>
                 </div>
                 </div>
