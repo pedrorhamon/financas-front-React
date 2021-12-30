@@ -27,13 +27,9 @@ class CadastroLancamentos extends React.Component {
         this.service = new LancamentoService();
     }
 
-    
     submit = () => {
-
         const usuarioLogado = LocalStorageService.obterItem('_usuario_logado');
-
         const { descricao, valor, mes, ano, tipo} = this.state;
-
        const lancamento = {
            descricao,
            valor,
@@ -42,7 +38,6 @@ class CadastroLancamentos extends React.Component {
            tipo, 
            usuario: usuarioLogado.id
         }
-
            this.service.salvar(lancamento)
            .then(response => {
                this.props.history.push('/consulta-lancamentos')
@@ -50,7 +45,11 @@ class CadastroLancamentos extends React.Component {
            }).catch(erro =>{
                messages.mensagemErro(erro.response.data)
            })
-       
+    }
+
+    componentDidMount(){
+        const params =  this.props.match.params;
+        console.log(params);
     }
 
     handleChange = (event) => {
