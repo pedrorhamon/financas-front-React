@@ -49,7 +49,7 @@ class CadastroLancamentos extends React.Component {
     }
 
     atualizar = () => {
-        const { descricao, valor, mes, ano, tipo, id, usuario} = this.state;
+        const { descricao, valor, mes, ano, tipo, id, status, usuario} = this.state;
        const lancamento = {
            descricao,
            valor,
@@ -57,6 +57,7 @@ class CadastroLancamentos extends React.Component {
            ano, 
            tipo, 
            id,
+           status,
            usuario
         }
            this.service.atualizar(lancamento)
