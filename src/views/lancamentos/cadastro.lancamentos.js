@@ -31,7 +31,7 @@ class CadastroLancamentos extends React.Component {
     submit = () => {
         const usuarioLogado = LocalStorageService.obterItem('_usuario_logado');
         const { descricao, valor, mes, ano, tipo} = this.state;
-       const lancamento = {
+        const lancamento = {
            descricao,
            valor,
            mes,
@@ -43,6 +43,26 @@ class CadastroLancamentos extends React.Component {
            .then(response => {
                this.props.history.push('/consulta-lancamentos')
             messages.mensagemSucesso('Lançamento Cadastrado com sucesso!')
+           }).catch(erro =>{
+               messages.mensagemErro(erro.response.data)
+           })
+    }
+
+    atualizar = () => {
+        const { descricao, valor, mes, ano, tipo, id, usuario} = this.state;
+       const lancamento = {
+           descricao,
+           valor,
+           mes,
+           ano, 
+           tipo, 
+           id,
+           usuario
+        }
+           this.service.atualizar(lancamento)
+           .then(response => {
+               this.props.history.push('/consulta-lancamentos')
+            messages.mensagemSucesso('Lançamento Alterado com sucesso!')
            }).catch(erro =>{
                messages.mensagemErro(erro.response.data)
            })
@@ -146,9 +166,9 @@ class CadastroLancamentos extends React.Component {
                 <div className="row">
                 <div className="col-md-6">
                     <button 
-                        onClick={this.submit} 
+                        onClick={this.atualizar} 
                         className="btn btn-success">
-                            Salvar</button>
+                            Alterar</button>
                     <button 
                         onClick={e => this.props.history.push('/consulta-lancamentos')}
                         className="btn btn-danger">
