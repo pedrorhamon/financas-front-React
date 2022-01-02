@@ -14,16 +14,26 @@ export default props => {
                 <td>{lancamento.mes}</td>
                 <td>{lancamento.status}</td>
                 <td>
+                    <button type="button"
+                        className="btn btn-success"
+                         onClick={e => props.alterarStatus(lancamento, 'EFETIVADO')} type="button">
+                        EFETIVADO
+                    </button>
+                    <button type="button"
+                        className="btn btn-warning"
+                        onClick={e => props.alterarStatus(lancamento, 'CANCELADO')} type="button">
+                        CANCELAR
+                    </button>
                     <button
                         type="button"
                         className="btn btn-primary"
                         onClick={e => props.editar(lancamento.id)}>
                         Editar
                     </button>
-                    <button 
-                    type="button" 
-                    className="btn btn-danger"
-                     onClick={e => props.deletar(lancamento)}>
+                    <button
+                        type="button"
+                        className="btn btn-danger"
+                        onClick={e => props.deletar(lancamento)}>
                         Deletar
                     </button>
                 </td>
