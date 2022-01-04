@@ -150,6 +150,7 @@ class ConsultaLancamentos extends React.Component {
                             <button onClick={e => this.props.history.push('/cadastro-lancamentos')}
                             type="button" 
                             className="btn btn-danger">
+                                <i className="pi pi-plus"></i>
                                 Cadastrar</button>
                         </div>
                     </div>
