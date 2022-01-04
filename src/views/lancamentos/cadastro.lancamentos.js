@@ -180,11 +180,13 @@ class CadastroLancamentos extends React.Component {
                             <button 
                         onClick={this.atualizar} 
                         className="btn btn-success">
+                            <i className="pi pi-refresh"></i>
                             Alterar</button>
                         ) : (
                             <button 
                         onClick={this.submit} 
                         className="btn btn-success">
+                            <i className="pi pi-save"></i>
                             Salvar</button>
                         )
                     }
@@ -192,6 +194,7 @@ class CadastroLancamentos extends React.Component {
                     <button 
                         onClick={e => this.props.history.push('/consulta-lancamentos')}
                         className="btn btn-danger">
+                            <i className="pi pi-times"></i>
                             Cancelar</button>
                 </div>
                 </div>
