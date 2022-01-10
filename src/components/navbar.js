@@ -1,22 +1,13 @@
 import React from "react";
 
 import NavBarItem from "./navbaritem";
-import AuthService from "../app/service/authService";
 import { AuthConsume } from "../main/provedorAutenticar";
-
-const deslogar = () => {
-    AuthService.removerUsuarioAutenticado();
-}
-
-const isUsuarioAutenticado = () => {
-    return AuthService.isUsuarioAutenticado();
-}
 
 function NavBar(props) {
     return (
         <div className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
             <div className="container">
-                <a href="https://bootswatch.com/" className="navbar-brand">Minhas Finanças</a>
+                <a href="#/home" className="navbar-brand">Minhas Finanças</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -26,7 +17,7 @@ function NavBar(props) {
                         <NavBarItem render={props.isUsuarioAutenticado} href="#/home" label="Home" />
                         <NavBarItem render={props.isUsuarioAutenticado} href="#/cadastro-usuarios" label="Usuários" />
                         <NavBarItem render={props.isUsuarioAutenticado} href="#/consulta-lancamentos" label="Lancamentos" />
-                        <NavBarItem render={props.isUsuarioAutenticado} onClick={deslogar} href="#/login" label="Sair" />
+                        <NavBarItem render={props.isUsuarioAutenticado} onClick={props.deslogar} href="#/login" label="Sair" />
                     </ul>
                 </div>
             </div>
@@ -36,7 +27,7 @@ function NavBar(props) {
 export default () => (
     <AuthConsume>
         {(context) => (
-            <NavBar isUsuarioAutenticado={context.isUsuarioAutenticado}/>
+            <NavBar isUsuarioAutenticado={context.isUsuarioAutenticado} deslogar={context.encerrar}/>
         )}
     </AuthConsume>
 );
