@@ -15,10 +15,10 @@ class ProvedorAutenticar extends React.Component {
 
     iniciarSessao = (usuario) => {
         AuthService.logar(usuario);
-        this.setState({isAutenticado: true, usuario})
+        this.setState({isAutenticado: true, usuarioAutenticado: usuario})
     }
 
-    encerrar = (usuario) => {
+    encerrar = () => {
         AuthService.removerUsuarioAutenticado();
         this.setState({isAutenticado: false, usuarioAutenticado: null})
     }
